@@ -95,10 +95,18 @@ const tracks =[
     }
   ]
   
-  app.get("/tracks", (req, res)=>{
-    res.json(tracks)
-    })
-  
+  app.get("/", (req, res) =>{ 
+  res.send("<h2>Welcome to the Music Recommendation API! Explore data on popular music tracks, their artists, albums, genres, and more.</h2>");
+  })
+
+  app.get("/docs", (req, res) => { 
+  res.send("Go to /api/recommendations or /api/tracks/{track_id} to learn about music recommendations."); 
+});
+
+  app.use((req, res, next) =>{ 
+  console.log(req.method + " " + req.url);
+  })
+
 
 app.listen(3000, () => {
     console.log("Server running")
